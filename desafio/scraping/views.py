@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def scraping(request):
+    return render(request, 'scraping.html')
