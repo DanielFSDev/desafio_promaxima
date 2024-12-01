@@ -1,1 +1,10 @@
 planilhas_baixadas/
+!/planilhas_baixadas/.keep
+planilhas_baixadas/sul/*
+!/planilhas_baixadas/sul/.keep
+
+*.pyc
+*.pyo
+__pycache__/
+
+env/
