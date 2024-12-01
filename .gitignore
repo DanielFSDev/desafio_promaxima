@@ -8,3 +8,6 @@ planilhas_baixadas/sul/*
 __pycache__/
 
 env/
+
+desafio/scraping/__pycache__/
+desafio/desafio/__pycache__/
