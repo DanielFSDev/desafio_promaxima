@@ -13,7 +13,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
+            position: relative;
         }
         .container {
             text-align: center;
@@ -23,6 +25,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 600px;
+            z-index: 1;
         }
         h1, h2 {
             margin-bottom: 20px;
@@ -65,12 +68,30 @@
             text-decoration: underline;
             color: #0056b3;
         }
+        #carregando {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none;
+            z-index: 9999;
+            text-align: center;
+        }
+        #carregando img {
+            width: 20px;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
+    {% load static %}
     <div class="container">
         <h1>Bem-vindo</h1>
-        <button><a href="{% url 'baixar' %}">Baixar Arquivos</a></button>
+        <button><a href="{% url 'baixar' %}" onclick="mostrarCarregando()">Baixar Arquivos</a></button>
         <button><a href="{% url 'visualizar_planilhas_baixadas' %}">Planilhas baixadas</a></button>
         <ul>
             {% for message in messages %}
@@ -78,5 +99,14 @@
             {% endfor %}
         </ul>
     </div>
+    <div id="carregando" aria-live="polite">
+        <p>Baixando, por favor aguarde...</p>
+        <img src="{% static 'carregando.gif' %}" alt="Carregando">
+    </div>
+    <script>
+        function mostrarCarregando() {
+            document.getElementById("carregando").style.display = "block";
+        }
+    </script>
 </body>
 </html>
