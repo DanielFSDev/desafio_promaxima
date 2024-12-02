@@ -1,4 +1,3 @@
-# init_db.py
 import sqlite3
 
 db_path = 'dados.db'
