@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planilhas baixadas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        a {
+            text-decoration: none;
+            color: #0056b3;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Planilhas Disponíveis</h1>
+    <a href="{% url 'inicial' %}">Voltar para a página inicial</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Arquivo</th>
+                <th>Acessar dados</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dado in arquivos_dados %}
+                <tr>
+                    <td>{{ dado.data }}</td>
+                    <td>{{ dado.arquivo }}</td>
+                    <td>
+                        <button><a href="{% url 'coletar_dados_planilha' arquivo=dado.arquivo %}">Acessar Dados</a></button>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">Não há planilhas disponíveis no momento.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
