@@ -18,3 +18,34 @@
 3. Após finalizar de baixar as planilhas
 4. Clicar em `Planilhas baixadas`
 5. Selecionar a planilha desejada e clicar em `Acessar dados`
+
+# Informações
+
+O código utiliza:
+
+- Django para gerenciar o backend e as views.
+- SQLite como banco de dados para armazenar informações extraídas.
+- Pandas para manipulação e leitura das planilhas.
+- BeautifulSoup para raspagem de links das páginas web.
+
+( Banco de Dados )
+ Tabelas :
+`planilha`
+- `id`: Identificador único.
+- `nome_arquivo`: Nome do arquivo baixado.
+- `data_download`: Data em que o arquivo foi salvo.
+
+`dados`
+- `id`: Identificador único.
+- `codigo`: Código do item na planilha.
+- `descricao`: Descrição do item.
+- `unidade`: Unidade de medida.
+- `valor`: Valor registrado.
+- `planilha_id`: Relaciona o dado à planilha correspondente.
+
+# Pontos importantes
+- Checagem de duplicidade: Arquivos duplicados são evitados tanto no download quanto no banco de dados.
+
+- Automação e organização: O sistema automatiza desde o download até o processamento e exibição, facilitando o uso por pessoas não técnicas.
+
+- Facilidade de extensão: A lógica modular permite adicionar novas funcionalidades ou expandir o suporte a diferentes layouts de planilhas.
