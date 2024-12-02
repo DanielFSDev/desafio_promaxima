@@ -14,7 +14,7 @@
 # Como utilizar a aplicação?
 
 1. Acessar `http://localhost:8000/scraping/inicial/`
-2. Baixar as planilhas `Baixar arquivos`
+2. Baixar as planilhas `Baixar arquivos` Observação: Baixar as planilhas irá demorar alguns minutos.
 3. Após finalizar de baixar as planilhas
 4. Clicar em `Planilhas baixadas`
 5. Selecionar a planilha desejada e clicar em `Acessar dados`
