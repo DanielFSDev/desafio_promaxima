@@ -14,6 +14,7 @@
 
 1. Entrar na pasta desafio: `cd desafio`
 2. Executar o comando: `docker compose up -d --build --force-recreate`
+3. Logo após, executar: `docker exec -it django_desafio python init_db.py`
 
 # Como utilizar a aplicação?
 
