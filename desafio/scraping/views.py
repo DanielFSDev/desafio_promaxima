@@ -98,11 +98,14 @@ def planilhas_baixadas(request):
         for arquivo in arquivos:
             ano_mes_arquivo = re.match(r'(?P<data>\d{6})', arquivo)
             if ano_mes_arquivo:
-                data = ano_mes_arquivo.group('data')
-                data_formatada = f"{data[4:6]}-{data[:4]}"
+                data_formatada = pegarMesAno(ano_mes_arquivo)
                 arquivos_dados.append({'arquivo': arquivo, 'data': data_formatada})
         arquivos_dados.sort(key=lambda x: x['data'], reverse=True)
     return render(request, 'visualizar_planilhas_baixadas.html', {'arquivos_dados': arquivos_dados})
+
+def pegarMesAno(ano_mes_arquivo):
+    data = ano_mes_arquivo.group('data')
+    return f"{data[4:6]}-{data[:4]}"
 
 def rasparDadosModeloNovo(pasta_arquivo):
     df = pd.read_excel(pasta_arquivo, sheet_name="Relatório", header=None)
@@ -118,9 +121,10 @@ def coletar_dados_planilha(request, arquivo):
     pasta_arquivo = os.path.join(pasta_destino, arquivo)
     if os.path.exists(pasta_arquivo):
         xls = pd.ExcelFile(pasta_arquivo)
-        sheet_names = xls.sheet_names
+        nome_abas = xls.sheet_names
         planilha_id = pegar_id_planilha_db(arquivo)
-        if "Relatório" in sheet_names:
+        existeAbaRelatorio = "Relatório" in nome_abas
+        if existeAbaRelatorio:
             dados = rasparDadosModeloNovo(pasta_arquivo)
             for dado in dados:
                 codigo, descricao, unidade, valor = dado
@@ -130,7 +134,7 @@ def coletar_dados_planilha(request, arquivo):
             dados = {}
             abas = ["RODOVIÁRIAS", "EDIFICAÇÕES", "PROJETOS"]
             for aba in abas:
-                if aba in sheet_names:
+                if aba in nome_abas:
                     rasparDadosModeloAntigo(pasta_arquivo, aba, dados)
             for aba, valores in dados.items():
                 for dado in valores:
