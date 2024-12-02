@@ -1,0 +1,12 @@
+services:
+  django_desafio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: django_desafio
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      DJANGO_ENV: development
