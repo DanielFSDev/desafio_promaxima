@@ -11,3 +11,7 @@ env/
 
 desafio/scraping/__pycache__/
 desafio/desafio/__pycache__/
+
+downloads/
+
+dados.db
