@@ -1,23 +1,27 @@
 # Desafio
 
-# Configurar ambiente virtual
+# Tecnologias
 
-1. Criar ambiente virtual: `python3 -m venv venv`
-2. Utilizar comando para ativar ambiente virtual (Linux): `source venv/bin/activate`
+- Python 3.7.5
+- SQLite
+- Docker
+- Pandas 
+- BeatifulSoup
+- openpyxl
+- pyxlsb
 
 # Como rodar o projeto?
 
-1. Instalar dependências do projeto: `pip install -r requirements.txt`
-2. executar script para criar banco de dados: `init_db.py`
-3. rodar o projeto: `python manage.py runserver`
+1. Entrar na pasta desafio: `cd desafio`
+2. Executar o comando: `docker compose up -d --build --force-recreate`
 
 # Como utilizar a aplicação?
 
 1. Acessar `http://localhost:8000/scraping/inicial/`
-2. Baixar as planilhas `Baixar arquivos` Observação: Baixar as planilhas irá demorar alguns minutos.
+2. Baixar as planilhas `Baixar arquivos` Observação: Baixar as planilhas irá demorar alguns minutos. (Ao terminar de baixar uma planilha, é salvo um registro na tabela 'planilha')
 3. Após finalizar de baixar as planilhas
 4. Clicar em `Planilhas baixadas`
-5. Selecionar a planilha desejada e clicar em `Acessar dados`
+5. Selecionar a planilha desejada e clicar em `Acessar dados` (Ao acessar dados, é salvo registros na tabela 'dados' de todos os dados processado da planilha. Antes de salvar esses registro, verifico se não existir já para evitar duplicidade).
 
 # Informações
 
